@@ -1,0 +1,96 @@
+.root {
+  isolation: isolate;
+  overflow: clip;
+  padding-top: var(--space-7);
+  border-radius: 0 0 2.5rem 2.5rem;
+}
+
+/* Hidden on phones: it covered the text */
+.shape {
+  position: absolute;
+  display: none;
+  width: clamp(18rem, 10rem + 35vw, 44rem);
+  height: auto;
+  aspect-ratio: 795 / 744;
+  right: calc(-1 * clamp(5rem, 2rem + 10vw, 10rem));
+  bottom: calc(-1 * clamp(4rem, 2rem + 6vw, 8rem));
+  color: var(--green-soft);
+  pointer-events: none;
+}
+
+.content {
+  position: relative;
+  text-align: center;
+}
+
+.bar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-5);
+  margin-bottom: var(--space-7);
+}
+.logo {
+  margin: 0;
+}
+.logo svg {
+  width: 13.5rem;
+  height: auto;
+  aspect-ratio: 885 / 182;
+}
+
+/* The contact bar is desktop only */
+.nav {
+  display: none;
+}
+.navLink {
+  font-weight: 600;
+  text-underline-offset: 4px;
+  text-decoration-thickness: 2px;
+}
+
+/* Each line fits whole from 360px up */
+.title {
+  font-size: clamp(1.5rem, 7.2vw, 4rem);
+  font-weight: 700;
+  line-height: 1.1;
+  margin-bottom: var(--space-6);
+}
+.title span {
+  display: block;
+}
+
+.lead {
+  font-size: var(--text-lg);
+  max-width: 30rem;
+  margin-inline: auto;
+  margin-bottom: var(--space-6);
+}
+
+@media (min-width: 56rem) {
+  .nav {
+    display: flex;
+    align-items: center;
+    gap: var(--space-5);
+  }
+  .bar {
+    justify-content: space-between;
+    margin-bottom: var(--space-9);
+  }
+  .logo svg {
+    width: 15rem;
+  }
+  .lead {
+    max-width: 54rem;
+    font-size: 1.4375rem;
+    text-wrap: wrap;
+  }
+  .shape {
+    display: block;
+    opacity: 0.25;
+    right: -4rem;
+    bottom: auto;
+    top: 50%;
+    transform: translateY(-45%);
+  }
+}

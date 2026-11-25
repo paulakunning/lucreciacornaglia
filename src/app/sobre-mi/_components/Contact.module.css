@@ -1,0 +1,55 @@
+/* On phones the shape sits below the buttons, hence the extra bottom padding */
+.root {
+  overflow: clip;
+  padding-top: var(--space-7);
+  padding-bottom: calc(var(--space-9) + 7rem);
+  border-radius: 2.5rem 2.5rem 0 0;
+  background: var(--blue);
+  color: var(--cream);
+  --focus: var(--sky);
+}
+.root h2 {
+  font-size: var(--text-3xl);
+  font-weight: 700;
+}
+
+.question {
+  max-width: none;
+  color: var(--sky);
+  font: 600 var(--text-xl) / 1.25 var(--font-display);
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+  margin-top: var(--space-7);
+}
+
+/* Large only on wide screens, so it doesn't cover the text on tablets */
+.shape {
+  position: absolute;
+  right: var(--gutter);
+  bottom: 0;
+  width: clamp(11rem, 60vw - 18rem, 30rem);
+  height: auto;
+  aspect-ratio: 900 / 960;
+  color: var(--sky);
+  opacity: 0.9;
+  pointer-events: none;
+}
+
+@media (min-width: 48rem) {
+  .root {
+    padding-bottom: var(--space-9);
+  }
+}
+
+@media (min-width: 56rem) {
+  .root {
+    padding-top: var(--space-9);
+  }
+  .shape {
+    right: 1.25rem;
+  }
+}

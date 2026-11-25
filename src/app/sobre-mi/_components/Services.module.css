@@ -1,0 +1,29 @@
+.list {
+  display: grid;
+  row-gap: var(--space-7);
+  column-gap: var(--space-8);
+}
+
+.item {
+  display: grid;
+  grid-template-columns: 3.25rem 1fr;
+  column-gap: var(--space-5);
+  padding-top: var(--space-5);
+  border-top: 2px solid var(--green-soft);
+}
+.item h3,
+.item p {
+  grid-column: 2;
+}
+
+.icon {
+  grid-row: span 2;
+  width: 3.25rem;
+  height: 3.25rem;
+}
+
+@media (min-width: 48rem) {
+  .list {
+    grid-template-columns: 1fr 1fr;
+  }
+}
