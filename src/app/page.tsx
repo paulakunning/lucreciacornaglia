@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import { BackgroundImage } from "@/components/BackgroundImage";
 import { Icon } from "@/components/Icon";
@@ -5,6 +6,12 @@ import { Isotype } from "@/components/Isotype";
 import { site } from "@/lib/site";
 import background from "@/assets/images/linktree-bg.jpg";
 import styles from "./page.module.css";
+
+export const metadata: Metadata = {
+  title: { absolute: "Lucrecia Cornaglia | Costos y rentabilidad" },
+  description:
+    "Acompaño a empresas y productores a analizar sus costos, precios y resultados para mejorar su gestión.",
+};
 
 /** Link-in-bio page: everyone lands here and goes on to the landing or to her channels. */
 export default function Home() {
