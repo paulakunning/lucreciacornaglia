@@ -1,0 +1,63 @@
+/* 48px on phones: with the default section padding the title sat too far down */
+.root {
+  isolation: isolate;
+  overflow: clip;
+  padding-block: var(--space-7);
+  border-radius: 2.5rem;
+  background: var(--green-soft);
+}
+
+.sector {
+  display: grid;
+  gap: var(--space-2);
+  padding-block: var(--space-5);
+  border-bottom: 2px solid var(--green);
+}
+/* Lines only divide sectors: none at the ends */
+.sector:first-child {
+  padding-top: 0;
+}
+.sector:last-child {
+  padding-bottom: 0;
+  border-bottom: 0;
+}
+.sector dt {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+  font: 600 var(--text-xl) / 1.15 var(--font-display);
+}
+.sector dd {
+  font-size: var(--text-lg);
+}
+
+.icon {
+  display: grid;
+  place-items: center;
+  flex: none;
+  width: 3.25rem;
+  height: 3.25rem;
+  border-radius: 50%;
+  background: var(--cream);
+  color: var(--green);
+}
+.icon svg {
+  width: 1.75rem;
+  height: 1.75rem;
+}
+
+/* Desktop: title on the left, list on the right; descriptions close on the line */
+@media (min-width: 56rem) {
+  .root {
+    padding-block: var(--space-9);
+  }
+  .inner {
+    display: grid;
+    grid-template-columns: 5fr 7fr;
+    gap: var(--space-8);
+    align-items: start;
+  }
+  .sector dd {
+    text-align: right;
+  }
+}

@@ -1,0 +1,50 @@
+.root {
+  padding: var(--space-7) var(--gutter);
+}
+
+.grid {
+  display: grid;
+  gap: var(--space-5);
+  align-items: center;
+}
+
+.seal {
+  justify-self: start;
+}
+.seal svg {
+  width: 5rem;
+  height: 5rem;
+  color: var(--cream);
+  --seal-bg: var(--green);
+}
+
+.name {
+  font: 600 var(--text-lg) / 1.2 var(--font-display);
+  margin-bottom: 0.25em;
+}
+
+.social {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-5);
+  font-weight: 600;
+}
+.social a {
+  text-underline-offset: 4px;
+  text-decoration-thickness: 2px;
+}
+
+.legal {
+  grid-column: 1 / -1;
+  max-width: none;
+  padding-top: var(--space-5);
+  border-top: 2px solid var(--green-soft);
+  font-size: var(--text-sm);
+  text-align: right;
+}
+
+@media (min-width: 48rem) {
+  .grid {
+    grid-template-columns: auto 1fr auto;
+  }
+}

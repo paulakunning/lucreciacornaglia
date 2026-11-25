@@ -1,0 +1,48 @@
+.grid {
+  display: grid;
+  gap: var(--space-7);
+}
+
+.photo {
+  position: relative;
+  width: 100%;
+  max-width: 22rem;
+}
+/* Square on phones, 4:5 portrait from tablet up */
+.frame {
+  position: relative;
+  aspect-ratio: 1;
+  border: 6px solid var(--green);
+  border-radius: var(--radius-lg);
+  background: var(--green-soft);
+  overflow: hidden;
+}
+.image {
+  object-fit: cover;
+}
+.donut {
+  position: absolute;
+  top: -9%;
+  right: -9%;
+  width: 30%;
+  height: auto;
+  aspect-ratio: 1;
+  color: var(--sky);
+  pointer-events: none;
+}
+
+.highlight {
+  font: 500 var(--text-xl) / 1.3 var(--font-display);
+  margin-top: var(--space-6);
+}
+
+@media (min-width: 48rem) {
+  .withPhoto {
+    grid-template-columns: 5fr 7fr;
+    align-items: center;
+    gap: var(--space-8);
+  }
+  .frame {
+    aspect-ratio: 4 / 5;
+  }
+}

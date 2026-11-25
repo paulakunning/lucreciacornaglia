@@ -1,0 +1,59 @@
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6em;
+  min-height: 3.25rem;
+  padding: 0.8em 1.6em;
+  border: 2px solid currentColor;
+  border-radius: 999px;
+  background: transparent;
+  color: var(--green);
+  font: 600 var(--text-base) / 1.2 var(--font-body);
+  text-decoration: none;
+  transition:
+    background-color 0.15s,
+    color 0.15s,
+    border-color 0.15s;
+}
+.button svg {
+  width: 1.3em;
+  height: 1.3em;
+  flex: none;
+}
+.button:hover {
+  background: var(--green-soft);
+}
+
+.primary {
+  background: var(--green);
+  border-color: var(--green);
+  color: var(--cream);
+}
+.primary:hover {
+  background: var(--blue);
+  border-color: var(--blue);
+}
+
+.small {
+  min-height: 2.75rem;
+  padding: 0.6em 1.25em;
+}
+
+.onDark {
+  color: var(--cream);
+}
+.onDark:hover {
+  background: var(--cream);
+  border-color: var(--cream);
+  color: var(--blue);
+}
+.onDark.primary {
+  background: var(--cream);
+  border-color: var(--cream);
+  color: var(--blue);
+}
+.onDark.primary:hover {
+  background: var(--sky);
+  border-color: var(--sky);
+}
