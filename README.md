@@ -44,11 +44,11 @@ Every call to action opens a WhatsApp chat with a prefilled message.
   - a focus ring whose colour adapts to dark sections;
   - decorative images and icons hidden from screen readers;
   - the isotype animation turns off for people who ask for reduced motion.
-- **Cache Components (the Next 16 default).** Prerendering forbids a bare `new Date()`, so the footer year comes from a `'use cache'` function.
+- **Cache Components** (opt-in, enabled by the create-next-app template). Prerendering forbids a bare `new Date()`, so the footer year comes from a `'use cache'` function.
 
 ## Quality
 
-- **CI** (GitHub Actions) runs on every push and pull request: lint, type check, Prettier, production build and end-to-end tests.
+- **CI** (GitHub Actions) runs on every push to `main` and on every pull request: lint, type check, Prettier, production build and end-to-end tests.
 - **24 end-to-end tests** (Playwright + axe) run against the production build. Setting `BASE_URL` points the same suite at the live site. They cover:
   - every contact link points to the real accounts;
   - the slogan and title read exactly as the client wrote them;
@@ -101,4 +101,4 @@ npm ci
 npm run dev   # http://localhost:3000
 ```
 
-CI runs lint, type checks, the production build and end-to-end tests on every push.
+CI runs lint, type checks, the production build and end-to-end tests on every push to `main` and on every pull request.
