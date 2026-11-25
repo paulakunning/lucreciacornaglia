@@ -1,0 +1,143 @@
+/* Design tokens from the brand manual: 3.1 colour palette, 4.x typography. */
+
+:root {
+  /* Official palette (no other colours, manual 2.4) */
+  --green: #0e5642;
+  --blue: #1e2a78;
+  --sky: #7fa9ff; /* accent: decorative or on dark backgrounds only (2.2:1 on cream) */
+  --cream: #fff8e8;
+  --green-soft: #a6d4ae;
+
+  /* MuseoModerno for headings, Manrope for everything else (loaded in layout.tsx) */
+  --font-display: var(--font-museo-moderno), ui-rounded, system-ui, sans-serif;
+  --font-body: var(--font-manrope), system-ui, sans-serif;
+
+  /* Type scale (mobile → desktop) */
+  --text-sm: 0.9375rem;
+  --text-base: 1.0625rem;
+  --text-lg: clamp(1.125rem, 1rem + 0.5vw, 1.3125rem);
+  --text-xl: clamp(1.375rem, 1.15rem + 1vw, 1.75rem);
+  --text-2xl: clamp(2rem, 1.4rem + 2.6vw, 3.25rem);
+  --text-3xl: clamp(2.75rem, 1.6rem + 5vw, 5.5rem);
+
+  /* Spacing */
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.5rem;
+  --space-6: 2rem;
+  --space-7: 3rem;
+  --space-8: clamp(3rem, 2rem + 4vw, 5rem);
+  --space-9: clamp(4.5rem, 3rem + 6vw, 8.5rem);
+
+  --radius: 1.25rem;
+  --radius-lg: clamp(1.5rem, 1rem + 2vw, 2.5rem);
+  --measure: 36rem;
+  --max-width: 72rem;
+  --gutter: clamp(1.25rem, 0.5rem + 3.5vw, 3rem);
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+  overflow-x: clip;
+}
+
+body {
+  margin: 0;
+  font: 400 var(--text-base) / 1.6 var(--font-body);
+  -webkit-font-smoothing: antialiased;
+  overflow-x: clip;
+  background: var(--cream);
+  color: var(--green);
+  --focus: var(--blue);
+}
+
+h1,
+h2,
+h3 {
+  margin: 0;
+  font-family: var(--font-display);
+  font-weight: 600;
+  line-height: 1.05;
+  text-wrap: balance;
+}
+h2 {
+  font-size: var(--text-2xl);
+  margin-bottom: var(--space-6);
+}
+h3 {
+  font-size: var(--text-xl);
+  line-height: 1.15;
+  margin-bottom: var(--space-2);
+}
+
+p {
+  margin: 0 0 1em;
+  max-width: var(--measure);
+  text-wrap: pretty;
+}
+p:last-child {
+  margin-bottom: 0;
+}
+
+ul,
+ol,
+dl,
+dd,
+figure {
+  margin: 0;
+  padding: 0;
+}
+ul,
+ol {
+  list-style: none;
+}
+
+a {
+  color: inherit;
+}
+
+svg {
+  display: block;
+}
+
+:focus-visible {
+  outline: 3px solid var(--focus, var(--blue));
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+.visually-hidden {
+  position: absolute !important;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+/* Layout primitives shared by every section */
+.container {
+  width: 100%;
+  max-width: var(--max-width);
+  margin-inline: auto;
+}
+.section {
+  position: relative;
+  padding: var(--space-9) var(--gutter);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation: none !important;
+    transition: none !important;
+  }
+}

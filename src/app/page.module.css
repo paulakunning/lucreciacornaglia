@@ -1,0 +1,128 @@
+.page {
+  position: relative;
+  isolation: isolate;
+  min-height: 100svh;
+  display: grid;
+  place-items: center;
+  padding: var(--space-7) var(--gutter);
+  overflow: clip;
+  background: var(--green);
+  color: var(--cream);
+  --focus: var(--sky);
+}
+
+.links {
+  position: relative;
+  width: 100%;
+  max-width: 25rem;
+}
+
+/* On phones the heading is centred, like the official logo lockup */
+.brand {
+  display: grid;
+  gap: var(--space-4);
+  justify-items: center;
+  text-align: center;
+  margin-bottom: var(--space-6);
+}
+.isotype {
+  width: 3.5rem;
+  color: var(--green-soft);
+}
+/* Fixed width: with % the svg took its default 300px and pushed the isotype off centre */
+.name svg {
+  width: 16rem;
+  max-width: 100%;
+  height: auto;
+  aspect-ratio: 885 / 182;
+  color: var(--green-soft);
+}
+/* On phones, semibold and scaled to fit in two lines */
+.tagline {
+  margin-top: var(--space-3);
+  font: 600 clamp(1.5rem, 7.2vw, 2.125rem) / 1.05 var(--font-display);
+  text-wrap: balance;
+}
+
+.list {
+  display: grid;
+  gap: var(--space-3);
+}
+
+/* Links as solid colour blocks; only the main one is taller */
+.tile {
+  display: flex;
+  flex-direction: row-reverse;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.6em;
+  width: 100%;
+  height: 100%;
+  min-height: 4.75rem;
+  padding: 1.25rem;
+  border-radius: var(--radius);
+  font: 600 var(--text-base) / 1.2 var(--font-body);
+  text-align: left;
+  text-decoration: none;
+}
+.tile:hover {
+  box-shadow: inset 0 0 0 3px currentColor;
+}
+.tile svg {
+  width: 1.3em;
+  height: 1.3em;
+  flex: none;
+}
+.tilePrimary {
+  min-height: 6.5rem;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: flex-end;
+  background: var(--cream);
+  color: var(--green);
+  font: 600 var(--text-xl) / 1.1 var(--font-display);
+}
+.tileWhatsapp {
+  background: var(--green-soft);
+  color: var(--green);
+}
+.tileInstagram {
+  background: var(--blue);
+  color: var(--cream);
+}
+
+/* Desktop: two columns, the links start level with the tagline */
+@media (min-width: 56rem) {
+  .links {
+    max-width: 70rem;
+    display: grid;
+    grid-template-columns: max-content 1fr 25rem;
+    grid-template-areas:
+      "isotype . ."
+      "name . ."
+      "tagline tagline nav";
+    column-gap: var(--space-7);
+    row-gap: var(--space-4);
+    align-items: start;
+  }
+  .brand {
+    display: contents;
+    text-align: start;
+  }
+  .isotype {
+    grid-area: isotype;
+    justify-self: center;
+  }
+  .name {
+    grid-area: name;
+  }
+  .tagline {
+    grid-area: tagline;
+    max-width: none;
+    font-size: var(--text-2xl);
+    font-weight: 700;
+  }
+  .nav {
+    grid-area: nav;
+  }
+}
