@@ -62,3 +62,30 @@ test("each title line fits on one line at 360px", async ({ page }) => {
     );
   expect(lines).toEqual([1, 1]);
 });
+
+const aboutParagraphs = async (page: import("@playwright/test").Page) => {
+  const section = page.getByRole("region", { name: "Un poco sobre mí" });
+  const intro = await section
+    .locator("p", { hasText: "Soy Lucrecia Cornaglia" })
+    .boundingBox();
+  const highlight = await section
+    .locator("p", { hasText: "Mi trabajo va más allá" })
+    .boundingBox();
+  return { intro: intro!, highlight: highlight! };
+};
+
+test("without a photo, the highlight fills the right column on desktop", async ({
+  page,
+}) => {
+  await page.setViewportSize({ width: 1280, height: 800 });
+  await page.goto("/sobre-mi");
+  const { intro, highlight } = await aboutParagraphs(page);
+  expect(highlight.x).toBeGreaterThan(intro.x + intro.width);
+});
+
+test("on phones the highlight stays below the text", async ({ page }) => {
+  await page.setViewportSize({ width: 390, height: 844 });
+  await page.goto("/sobre-mi");
+  const { intro, highlight } = await aboutParagraphs(page);
+  expect(highlight.y).toBeGreaterThan(intro.y + intro.height);
+});

@@ -46,3 +46,15 @@
     aspect-ratio: 4 / 5;
   }
 }
+
+@media (min-width: 56rem) {
+  .split {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap: var(--space-8);
+    align-items: center;
+  }
+  .split .highlight {
+    margin-top: 0;
+  }
+}
