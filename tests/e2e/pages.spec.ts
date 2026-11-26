@@ -5,6 +5,9 @@ const SITE = "https://lucreciacornaglia.vercel.app";
 test("unknown URLs show the branded 404", async ({ page }) => {
   const res = await page.goto("/no-existe");
   expect(res?.status()).toBe(404);
+  await expect(page).toHaveTitle(
+    "No encontramos esta página | Lucrecia Cornaglia",
+  );
   await expect(page.getByRole("heading", { level: 1 })).toHaveText(
     "No encontramos esta página",
   );

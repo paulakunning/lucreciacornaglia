@@ -17,6 +17,16 @@ test("shows every section in order", async ({ page }) => {
   ]);
 });
 
+// JSX drops whitespace at line breaks, so a reflow can glue a bold phrase to its neighbour.
+test("bold phrases keep the spaces around them", async ({ page }) => {
+  await page.goto("/sobre-mi");
+  await expect(page.locator("p:has(strong)")).toHaveText([
+    "Acompaño a empresas y productores a analizar sus costos, precios y resultados para mejorar su gestión.",
+    "Mi trabajo va más allá de los números: busco comprometerme con cada negocio para aportar soluciones y mejoras.",
+    "Mi consultoría complementa el trabajo de tu estudio contable, no lo reemplaza. Podemos colaborar para que cuentes con información útil para gestionar y tomar decisiones.",
+  ]);
+});
+
 test("every contact link points to the real accounts", async ({ page }) => {
   await page.goto("/sobre-mi");
   const hrefs = (selector: string) =>

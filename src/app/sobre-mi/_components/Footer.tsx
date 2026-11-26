@@ -32,7 +32,7 @@ export function Footer() {
   );
 }
 
-/** Year of the last build: cached so the page stays static (prerendering bans a bare `new Date()`). */
+/** Year the page was last generated (build or 30-day revalidation): cached so the page stays static (prerendering bans a bare `new Date()`). */
 async function BuildYear() {
   "use cache";
   cacheLife("max");

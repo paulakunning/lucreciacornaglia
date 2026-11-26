@@ -9,19 +9,13 @@ import styles from "./page.module.css";
 
 export const metadata: Metadata = {
   title: { absolute: "Lucrecia Cornaglia | Costos y rentabilidad" },
-  description:
-    "Acompaño a empresas y productores a analizar sus costos, precios y resultados para mejorar su gestión.",
 };
 
 /** Link-in-bio page: everyone lands here and goes on to the landing or to her channels. */
 export default function Home() {
   return (
     <div className={styles.page}>
-      <BackgroundImage
-        src={background}
-        overlay="rgb(14 86 66 / 0.8)"
-        priority
-      />
+      <BackgroundImage src={background} overlay="rgb(14 86 66 / 0.8)" preload />
       <main className={styles.links}>
         <header className={styles.brand}>
           <Isotype className={styles.isotype} />

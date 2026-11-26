@@ -11,7 +11,7 @@ export function Hero() {
       <BackgroundImage
         src={background}
         overlay="rgb(255 248 232 / 0.58)"
-        priority
+        preload
       />
       <Icon name="isotype" className={styles.shape} />
       <div className={`container ${styles.content}`}>

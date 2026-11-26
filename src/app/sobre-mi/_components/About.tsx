@@ -20,7 +20,7 @@ export function About({ photo }: AboutProps) {
                 src={photo}
                 alt="Lucrecia Cornaglia"
                 fill
-                sizes="(min-width: 48rem) 22rem, 100vw"
+                sizes="22rem"
                 className={styles.image}
               />
             </div>
