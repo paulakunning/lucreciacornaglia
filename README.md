@@ -50,7 +50,7 @@ Every call to action opens a WhatsApp chat with a prefilled message.
 ## Quality
 
 - **CI** (GitHub Actions) runs on every push to `main` and on every pull request: lint, type check, Prettier, production build and end-to-end tests.
-- **31 end-to-end tests** (Playwright + axe) run against the production build. Setting `BASE_URL` points the same suite at the live site. They cover:
+- **32 end-to-end tests** (Playwright + axe) run against the production build. Setting `BASE_URL` points the same suite at the live site. They cover:
   - every contact link points to the real accounts;
   - the slogan and title read exactly as the client wrote them;
   - nothing overflows a 360px screen;

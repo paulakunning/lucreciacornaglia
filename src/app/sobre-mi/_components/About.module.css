@@ -2,6 +2,10 @@
   display: grid;
   gap: var(--space-7);
 }
+/* This section only fades in, without rising: on desktop it shares the first screen with the hero. */
+.grid [data-reveal="hidden"] {
+  translate: none;
+}
 
 .photo {
   position: relative;

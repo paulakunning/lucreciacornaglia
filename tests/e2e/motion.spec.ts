@@ -27,16 +27,32 @@ test("blocks below the fold fade in as they scroll into view", async ({
     .toEqual(new Set(["1"]));
 });
 
-test("blocks already on screen are never hidden", async ({ page }) => {
+test("blocks already on screen fade in on load instead of being hidden", async ({
+  page,
+}) => {
   await page.setViewportSize({ width: 1280, height: 2000 });
   await page.goto("/sobre-mi");
   // Wait until the script has run: something further down is hidden.
   await expect(
     page.getByRole("listitem").filter({ hasText: "Nos conocemos" }),
   ).toHaveCSS("opacity", "0");
-  await expect(
-    page.locator("p", { hasText: "Mi trabajo va más allá" }),
-  ).toHaveCSS("opacity", "1");
+  const highlight = page.locator("p", { hasText: "Mi trabajo va más allá" });
+  await expect(highlight).not.toHaveAttribute("data-reveal", "hidden");
+  expect(
+    await highlight.evaluate((el) => getComputedStyle(el).animationName),
+  ).not.toBe("none");
+  await expect(highlight).toHaveCSS("opacity", "1");
+});
+
+test("the about section fades in without rising", async ({ page }) => {
+  await page.setViewportSize({ width: 390, height: 400 });
+  await page.goto("/sobre-mi");
+  const intro = page
+    .getByRole("region", { name: "Un poco sobre mí" })
+    .locator("[data-reveal]")
+    .first();
+  await expect(intro).toHaveAttribute("data-reveal", "hidden");
+  await expect(intro).toHaveCSS("translate", "none");
 });
 
 /** For the hero's text and its photo: whether each one, or a block around it, animates. */
@@ -81,8 +97,10 @@ test.describe("without JavaScript", () => {
 
   test("every block is visible", async ({ page }) => {
     await page.goto("/sobre-mi");
-    const values = await opacities(page);
-    expect(values.length).toBeGreaterThan(10);
-    expect(new Set(values)).toEqual(new Set(["1"]));
+    expect((await opacities(page)).length).toBeGreaterThan(10);
+    // Once the on-load fade is over.
+    await expect
+      .poll(async () => new Set(await opacities(page)))
+      .toEqual(new Set(["1"]));
   });
 });
