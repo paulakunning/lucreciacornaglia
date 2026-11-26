@@ -14,7 +14,7 @@ export function About({ photo }: AboutProps) {
         className={`container ${styles.grid} ${photo ? styles.withPhoto : ""}`}
       >
         {photo && (
-          <figure className={styles.photo}>
+          <figure className={styles.photo} data-reveal>
             <div className={styles.frame}>
               <Image
                 src={photo}
@@ -29,7 +29,7 @@ export function About({ photo }: AboutProps) {
         )}
         {/* Without a photo the highlight takes the right column on desktop. */}
         <div className={photo ? undefined : styles.split}>
-          <div>
+          <div data-reveal>
             <h2 id="about-title">Un poco sobre mí</h2>
             <p>
               Soy Lucrecia Cornaglia, Contadora Pública y Especialista en
@@ -42,7 +42,7 @@ export function About({ photo }: AboutProps) {
               las particularidades de su actividad.
             </p>
           </div>
-          <p className={styles.highlight}>
+          <p className={styles.highlight} data-reveal>
             <strong>Mi trabajo va más allá de los números:</strong> busco
             comprometerme con cada negocio para aportar soluciones y mejoras.
           </p>

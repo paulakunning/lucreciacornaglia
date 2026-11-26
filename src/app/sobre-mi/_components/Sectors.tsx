@@ -40,10 +40,12 @@ export function Sectors() {
     >
       <BackgroundImage src={background} overlay="rgb(166 212 174 / 0.42)" />
       <div className={`container ${styles.inner}`}>
-        <h2 id="sectors-title">¿Con quiénes trabajo?</h2>
+        <h2 id="sectors-title" data-reveal>
+          ¿Con quiénes trabajo?
+        </h2>
         <dl>
           {sectors.map(({ icon, name, focus }) => (
-            <div key={name} className={styles.sector}>
+            <div key={name} className={styles.sector} data-reveal>
               <dt>
                 <span className={styles.icon}>
                   <Icon name={icon} />

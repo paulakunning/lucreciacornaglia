@@ -35,6 +35,8 @@
   --measure: 36rem;
   --max-width: 72rem;
   --gutter: clamp(1.25rem, 0.5rem + 3.5vw, 3rem);
+
+  --ease-out: cubic-bezier(0.2, 0.7, 0.2, 1);
 }
 
 *,
@@ -131,6 +133,20 @@ svg {
 .section {
   position: relative;
   padding: var(--space-9) var(--gutter);
+}
+
+/* Scroll reveal, driven by RevealOnScroll.tsx: it only ever hides blocks below the fold. */
+@media screen and (prefers-reduced-motion: no-preference) {
+  [data-reveal="hidden"] {
+    opacity: 0;
+    translate: 0 1rem;
+  }
+  [data-reveal="shown"] {
+    transition:
+      opacity 0.6s var(--ease-out),
+      translate 0.6s var(--ease-out);
+    transition-delay: var(--reveal-delay, 0s);
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {

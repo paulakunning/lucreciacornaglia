@@ -29,10 +29,12 @@ export function Services() {
   return (
     <section className="section" aria-labelledby="services-title">
       <div className="container">
-        <h2 id="services-title">¿En qué puedo ayudarte?</h2>
+        <h2 id="services-title" data-reveal>
+          ¿En qué puedo ayudarte?
+        </h2>
         <ul className={styles.list}>
           {services.map(({ icon, title, text }) => (
-            <li key={title} className={styles.item}>
+            <li key={title} className={styles.item} data-reveal>
               <Icon name={icon} className={styles.icon} />
               <h3>{title}</h3>
               <p>{text}</p>

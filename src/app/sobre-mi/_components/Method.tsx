@@ -20,14 +20,16 @@ export function Method() {
   return (
     <section className="section" aria-labelledby="method-title">
       <div className="container">
-        <h2 id="method-title">Cómo trabajo</h2>
-        <p className={styles.intro}>
+        <h2 id="method-title" data-reveal>
+          Cómo trabajo
+        </h2>
+        <p className={styles.intro} data-reveal>
           No trabajo con fórmulas prearmadas. Dedico tiempo a conocer cada
           empresa y a trabajar junto a sus dueños y equipos.
         </p>
         <ol className={styles.steps}>
           {steps.map(({ title, text }, i) => (
-            <li key={title} className={styles.step}>
+            <li key={title} className={styles.step} data-reveal>
               <span className={styles.number} aria-hidden="true">
                 {i + 1}
               </span>
@@ -37,7 +39,7 @@ export function Method() {
           ))}
         </ol>
         <div className={styles.footer}>
-          <div>
+          <div data-reveal>
             <p>
               A partir de ese análisis, podemos seguir con la implementación de
               herramientas, la capacitación de tu equipo o revisiones
@@ -48,7 +50,7 @@ export function Method() {
               situación.
             </p>
           </div>
-          <aside className={styles.note}>
+          <aside className={styles.note} data-reveal>
             <Icon name="knot" className={styles.noteIcon} />
             <p>
               <strong>

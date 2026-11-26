@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { RevealOnScroll } from "@/components/RevealOnScroll";
 import { About } from "./_components/About";
 import { Contact } from "./_components/Contact";
 import { Footer } from "./_components/Footer";
@@ -25,6 +26,7 @@ export default function AboutPage() {
         <Contact />
       </main>
       <Footer />
+      <RevealOnScroll />
     </>
   );
 }
