@@ -6,6 +6,10 @@ const PAGES = ["/", "/sobre-mi", "/no-existe"];
 for (const path of PAGES) {
   test(`${path} has no serious accessibility violations`, async ({ page }) => {
     await page.goto(path);
+    // Check the page at rest, not a frame of an entrance fade.
+    await page.evaluate(() =>
+      Promise.all(document.getAnimations().map((a) => a.finished)),
+    );
     const { violations } = await new AxeBuilder({ page }).analyze();
     expect(
       violations.filter(

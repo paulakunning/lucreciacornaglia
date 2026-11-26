@@ -43,14 +43,14 @@ Every call to action opens a WhatsApp chat with a prefilled message.
   - semantic landmarks and headings;
   - a focus ring whose colour adapts to dark sections;
   - decorative images and icons hidden from screen readers;
-  - the isotype and the scroll reveals turn off for people who ask for reduced motion.
-- **Scroll reveals that never hide content.** One small client component watches the `[data-reveal]` blocks and only hides the ones still below the fold, so everything stays visible without JavaScript, when printing, or if the script fails to load. CSS scroll-driven animations would need no JavaScript, but they don't run on iOS before 26, and most visitors arrive from Instagram on their phones.
+  - the entrance animations and scroll reveals turn off for people who ask for reduced motion.
+- **Scroll reveals that never hide content.** One small client component watches the `[data-reveal]` blocks and only hides the ones still below the fold, so everything stays visible without JavaScript, when printing, or if the script fails to load. CSS scroll-driven animations would need no JavaScript, but they don't run on iOS before 26, and most visitors arrive from Instagram on their phones. The hero's text eases in with CSS alone, while its photo stays put: it is the page's largest paint, so animating it would delay LCP.
 - **Cache Components** (opt-in, enabled by the create-next-app template). Prerendering forbids a bare `new Date()`, so the footer year comes from a `'use cache'` function.
 
 ## Quality
 
 - **CI** (GitHub Actions) runs on every push to `main` and on every pull request: lint, type check, Prettier, production build and end-to-end tests.
-- **30 end-to-end tests** (Playwright + axe) run against the production build. Setting `BASE_URL` points the same suite at the live site. They cover:
+- **31 end-to-end tests** (Playwright + axe) run against the production build. Setting `BASE_URL` points the same suite at the live site. They cover:
   - every contact link points to the real accounts;
   - the slogan and title read exactly as the client wrote them;
   - nothing overflows a 360px screen;

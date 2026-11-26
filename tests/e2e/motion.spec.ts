@@ -39,6 +39,33 @@ test("blocks already on screen are never hidden", async ({ page }) => {
   ).toHaveCSS("opacity", "1");
 });
 
+/** For the hero's text and its photo: whether each one, or a block around it, animates. */
+const heroAnimations = (page: Page) =>
+  page
+    .locator("section")
+    .first()
+    .evaluate((hero) => {
+      const animates = (el: Element) => {
+        for (let e: Element | null = el; e && e !== hero; e = e.parentElement)
+          if (getComputedStyle(e).animationName !== "none") return true;
+        return false;
+      };
+      return {
+        text: [...hero.querySelectorAll("h1, p, a")].map(animates),
+        photo: animates(hero.querySelector("img")!),
+      };
+    });
+
+// The photo is the page's largest paint, so animating it would cost PageSpeed points.
+test("the hero text eases in on load, its photo stays put", async ({
+  page,
+}) => {
+  await page.goto("/sobre-mi");
+  const { text, photo } = await heroAnimations(page);
+  expect(new Set(text)).toEqual(new Set([true]));
+  expect(photo).toBe(false);
+});
+
 test("nothing is hidden when the visitor asks for reduced motion", async ({
   page,
 }) => {
@@ -46,6 +73,7 @@ test("nothing is hidden when the visitor asks for reduced motion", async ({
   await page.goto("/sobre-mi");
   await expect(page.locator('[data-reveal="hidden"]').first()).toBeAttached();
   expect(new Set(await opacities(page))).toEqual(new Set(["1"]));
+  expect(new Set((await heroAnimations(page)).text)).toEqual(new Set([false]));
 });
 
 test.describe("without JavaScript", () => {
